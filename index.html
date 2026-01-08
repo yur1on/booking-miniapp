@@ -8,121 +8,90 @@
 
   <style>
     :root{
-      --bg: #0b1220;
-      --text: rgba(255,255,255,.92);
-      --hint: rgba(255,255,255,.62);
-      --border: rgba(255,255,255,.12);
-      --card: rgba(255,255,255,.06);
-
-      --ok: #22c55e;
-      --bad:#ef4444;
-
-      --radius: 16px;
-      --radius2: 14px;
-      --shadow: 0 10px 26px rgba(0,0,0,.22);
-
-      --tap: 46px;        /* минимум для пальцев */
-      --gap: 10px;
-      --pad: 14px;
+      --bg:#0b1220;
+      --text:rgba(255,255,255,.92);
+      --hint:rgba(255,255,255,.62);
+      --border:rgba(255,255,255,.12);
+      --card:rgba(255,255,255,.06);
+      --radius:16px;
+      --radius2:14px;
+      --shadow:0 10px 26px rgba(0,0,0,.22);
+      --tap:46px;
+      --gap:10px;
+      --pad:14px;
     }
-
     body{
       margin:0;
-      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial;
+      font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial;
       background: var(--tg-theme-bg-color, var(--bg));
       color: var(--tg-theme-text-color, var(--text));
     }
-
     .wrap{
-      max-width: 520px; /* телефонный фокус */
-      margin: 0 auto;
+      max-width:520px;
+      margin:0 auto;
       padding:
         calc(var(--pad) + env(safe-area-inset-top))
         var(--pad)
         calc(var(--pad) + env(safe-area-inset-bottom));
     }
-
     .hero{
-      border: 1px solid color-mix(in srgb, var(--tg-theme-hint-color, #999) 28%, transparent);
+      border:1px solid color-mix(in srgb, var(--tg-theme-hint-color, #999) 28%, transparent);
       background: linear-gradient(
         135deg,
         color-mix(in srgb, var(--tg-theme-button-color, #4f46e5) 22%, transparent),
         color-mix(in srgb, var(--tg-theme-link-color, #6ee7ff) 12%, transparent)
       );
-      border-radius: var(--radius);
-      padding: 14px;
-      box-shadow: var(--shadow);
+      border-radius:var(--radius);
+      padding:14px;
+      box-shadow:var(--shadow);
       display:flex;
-      align-items:flex-start;
-      justify-content: space-between;
-      gap: 10px;
+      justify-content:space-between;
+      gap:10px;
     }
-
-    .title{ margin:0; font-weight: 900; font-size: 18px; line-height: 1.2; }
-    .subtitle{
-      margin: 6px 0 0 0;
-      font-size: 13px;
-      color: var(--tg-theme-hint-color, var(--hint));
-      line-height: 1.35;
-    }
-
+    .title{margin:0;font-weight:900;font-size:18px;line-height:1.2;}
+    .subtitle{margin:6px 0 0 0;font-size:13px;color:var(--tg-theme-hint-color,var(--hint));line-height:1.35;}
     .pill{
-      border: 1px solid color-mix(in srgb, var(--tg-theme-hint-color, #999) 28%, transparent);
+      border:1px solid color-mix(in srgb, var(--tg-theme-hint-color, #999) 28%, transparent);
       background: color-mix(in srgb, var(--tg-theme-bg-color, #000) 82%, transparent);
-      border-radius: 999px;
-      padding: 8px 10px;
-      font-size: 12px;
+      border-radius:999px;
+      padding:8px 10px;
+      font-size:12px;
       color: var(--tg-theme-hint-color, var(--hint));
-      white-space: nowrap;
+      white-space:nowrap;
+      height: fit-content;
     }
-
     .card{
-      margin-top: var(--gap);
-      border: 1px solid color-mix(in srgb, var(--tg-theme-hint-color, #999) 28%, transparent);
+      margin-top:var(--gap);
+      border:1px solid color-mix(in srgb, var(--tg-theme-hint-color, #999) 28%, transparent);
       background: color-mix(in srgb, var(--tg-theme-bg-color, var(--bg)) 86%, white 14%);
-      border-radius: var(--radius);
-      padding: 14px;
-      box-shadow: var(--shadow);
+      border-radius:var(--radius);
+      padding:14px;
+      box-shadow:var(--shadow);
     }
-
     .head{
       display:flex;
-      align-items: baseline;
-      justify-content: space-between;
-      gap: 10px;
-      margin-bottom: 10px;
+      justify-content:space-between;
+      align-items:baseline;
+      gap:10px;
+      margin-bottom:10px;
     }
-    .h{ margin:0; font-weight: 900; font-size: 14px; letter-spacing: .2px; }
-    .hint{
-      margin:0;
-      font-size: 12px;
-      color: var(--tg-theme-hint-color, var(--hint));
-      text-align:right;
-      line-height: 1.2;
-    }
+    .h{margin:0;font-weight:900;font-size:14px;}
+    .hint{margin:0;font-size:12px;color:var(--tg-theme-hint-color,var(--hint));text-align:right;}
 
-    /* SERVICES */
-    .services{
-      display:grid;
-      grid-template-columns: 1fr;
-      gap: 10px;
-    }
-
+    .services{display:grid; grid-template-columns:1fr; gap:10px;}
     .svc{
-      border-radius: var(--radius2);
-      border: 1px solid color-mix(in srgb, var(--tg-theme-hint-color, #999) 28%, transparent);
+      border-radius:var(--radius2);
+      border:1px solid color-mix(in srgb, var(--tg-theme-hint-color, #999) 28%, transparent);
       background: color-mix(in srgb, var(--tg-theme-bg-color, var(--bg)) 90%, white 10%);
-      padding: 12px;
-      min-height: 74px;
-      cursor: pointer;
+      padding:12px;
+      min-height:74px;
+      cursor:pointer;
       user-select:none;
-      transition: transform .08s ease, border-color .12s ease, background .12s ease;
       display:flex;
-      flex-direction: column;
-      justify-content: space-between;
-      gap: 8px;
+      flex-direction:column;
+      justify-content:space-between;
+      gap:8px;
     }
-    .svc:active{ transform: scale(.99); }
     .svc.active{
       border-color: color-mix(in srgb, var(--tg-theme-button-color, #4f46e5) 70%, white 30%);
       background: linear-gradient(
@@ -131,56 +100,32 @@
         color-mix(in srgb, var(--tg-theme-link-color, #6ee7ff) 10%, transparent)
       );
     }
-    .svc-top{
-      display:flex;
-      gap: 10px;
-      justify-content: space-between;
-      align-items:flex-start;
-    }
-    .svc-name{ margin:0; font-weight: 900; font-size: 13px; line-height: 1.2; }
-    .svc-price{ margin:0; font-weight: 950; font-size: 13px; color: var(--tg-theme-link-color, #6ee7ff); white-space: nowrap; }
-    .svc-meta{ margin:0; font-size: 12px; color: var(--tg-theme-hint-color, var(--hint)); }
+    .svc-top{display:flex; justify-content:space-between; gap:10px; align-items:flex-start;}
+    .svc-name{margin:0;font-weight:900;font-size:13px;line-height:1.2;}
+    .svc-price{margin:0;font-weight:950;font-size:13px;color:var(--tg-theme-link-color,#6ee7ff);white-space:nowrap;}
+    .svc-meta{margin:0;font-size:12px;color:var(--tg-theme-hint-color,var(--hint));}
 
-    /* DATES: сетка без прокрутки */
     .dates{
       display:grid;
-      gap: 10px;
+      gap:10px;
       grid-template-columns: repeat(4, minmax(0,1fr));
     }
-    /* очень маленькие экраны */
     @media (max-width: 360px){
       .dates{ grid-template-columns: repeat(3, minmax(0,1fr)); }
     }
-
     .date{
-      height: 58px;
-      border-radius: 14px;
-      border: 1px solid color-mix(in srgb, var(--tg-theme-hint-color, #999) 28%, transparent);
+      height:58px;
+      border-radius:14px;
+      border:1px solid color-mix(in srgb, var(--tg-theme-hint-color, #999) 28%, transparent);
       background: color-mix(in srgb, var(--tg-theme-bg-color, var(--bg)) 90%, white 10%);
       cursor:pointer;
       user-select:none;
-      transition: transform .08s ease, border-color .12s ease, background .12s ease;
       display:flex;
-      flex-direction: column;
+      flex-direction:column;
       align-items:center;
       justify-content:center;
-      gap: 2px;
+      gap:2px;
       text-align:center;
-    }
-    .date:active{ transform: scale(.99); }
-
-    .date.ok{
-      border-color: color-mix(in srgb, var(--ok) 38%, white 62%);
-      background: linear-gradient(
-        135deg,
-        color-mix(in srgb, var(--ok) 14%, transparent),
-        color-mix(in srgb, var(--tg-theme-link-color, #6ee7ff) 6%, transparent)
-      );
-    }
-    .date.bad{
-      border-color: color-mix(in srgb, var(--bad) 34%, white 66%);
-      background: color-mix(in srgb, var(--bad) 10%, transparent);
-      opacity: .75;
     }
     .date.active{
       border-color: color-mix(in srgb, var(--tg-theme-button-color, #4f46e5) 70%, white 30%);
@@ -190,89 +135,30 @@
         color-mix(in srgb, var(--tg-theme-link-color, #6ee7ff) 10%, transparent)
       );
     }
+    .d1{margin:0;font-weight:950;font-size:13px;}
+    .d2{margin:0;font-size:11px;color:var(--tg-theme-hint-color,var(--hint));}
 
-    .d1{ margin:0; font-weight: 950; font-size: 13px; letter-spacing: .2px; }
-    .d2{ margin:0; font-size: 11px; color: var(--tg-theme-hint-color, var(--hint)); }
-
-    /* SLOTS: сетка всегда по экрану */
-    .slots{
-      display:grid;
-      gap: 10px;
-      grid-template-columns: repeat(3, minmax(0,1fr));
+    .note{
+      margin:10px 0 0 0;
+      font-size:12px;
+      color:var(--tg-theme-hint-color,var(--hint));
+      line-height:1.35;
     }
-    @media (min-width: 390px){
-      .slots{ grid-template-columns: repeat(4, minmax(0,1fr)); }
-    }
-    @media (min-width: 480px){
-      .slots{ grid-template-columns: repeat(5, minmax(0,1fr)); }
-    }
-
-    .slot{
+    .btn{
+      margin-top:12px;
+      width:100%;
       height: var(--tap);
       border-radius: 14px;
-      border: 1px solid color-mix(in srgb, var(--tg-theme-hint-color, #999) 28%, transparent);
-      background: color-mix(in srgb, var(--tg-theme-bg-color, var(--bg)) 90%, white 10%);
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      font-weight: 950;
-      font-size: 13px;
-      cursor:pointer;
-      user-select:none;
-      transition: transform .08s ease, border-color .12s ease, background .12s ease;
+      border: 0;
+      font-weight: 900;
+      font-size: 14px;
+      cursor: pointer;
+      color: var(--tg-theme-button-text-color, #fff);
+      background: var(--tg-theme-button-color, #4f46e5);
     }
-    .slot:active{ transform: scale(.99); }
-    .slot.ok{
-      border-color: color-mix(in srgb, var(--ok) 38%, white 62%);
-      background: linear-gradient(
-        135deg,
-        color-mix(in srgb, var(--ok) 12%, transparent),
-        color-mix(in srgb, var(--tg-theme-link-color, #6ee7ff) 6%, transparent)
-      );
-    }
-    .slot.active{
-      border-color: color-mix(in srgb, var(--ok) 78%, white 22%);
-      background: linear-gradient(
-        135deg,
-        color-mix(in srgb, var(--ok) 22%, transparent),
-        color-mix(in srgb, var(--tg-theme-link-color, #6ee7ff) 12%, transparent)
-      );
-    }
-
-    .empty{
-      grid-column: 1 / -1;
-      color: var(--tg-theme-hint-color, var(--hint));
-      font-size: 13px;
-      line-height: 1.35;
-      padding: 2px;
-    }
-
-    .summary{
-      margin-top: 12px;
-      border-radius: var(--radius);
-      border: 1px solid color-mix(in srgb, var(--tg-theme-hint-color, #999) 28%, transparent);
-      background: color-mix(in srgb, var(--tg-theme-bg-color, var(--bg)) 88%, white 12%);
-      padding: 12px;
-      display:none;
-      gap: 10px;
-      align-items:center;
-      justify-content: space-between;
-      flex-wrap: wrap;
-    }
-    .summary p{
-      margin:0;
-      font-size: 13px;
-      color: var(--tg-theme-hint-color, var(--hint));
-      line-height: 1.35;
-    }
-    .summary strong{ color: var(--tg-theme-text-color, var(--text)); }
-    .price{
-      border-radius: 999px;
-      padding: 8px 10px;
-      border: 1px solid color-mix(in srgb, var(--tg-theme-hint-color, #999) 28%, transparent);
-      background: color-mix(in srgb, var(--tg-theme-bg-color, var(--bg)) 90%, white 10%);
-      font-size: 12px;
-      white-space: nowrap;
+    .btn:disabled{
+      opacity:.55;
+      cursor:not-allowed;
     }
   </style>
 </head>
@@ -282,15 +168,15 @@
     <div class="hero">
       <div>
         <p class="title" id="hello">Загрузка…</p>
-        <p class="subtitle">Выбирайте без прокрутки: всё помещается по ширине экрана ✅</p>
+        <p class="subtitle">Выберите услугу и дату. Свободное время бот пришлёт кнопками в чат.</p>
       </div>
-      <div class="pill" id="badge">Mini App</div>
+      <div class="pill">Mini App</div>
     </div>
 
     <div class="card">
       <div class="head">
         <p class="h">Услуга</p>
-        <p class="hint">тап по карточке</p>
+        <p class="hint">выберите одну</p>
       </div>
       <div class="services" id="services"></div>
     </div>
@@ -298,33 +184,24 @@
     <div class="card">
       <div class="head">
         <p class="h">Дата</p>
-        <p class="hint">🟢 свободно · 🔴 закрыто</p>
+        <p class="hint">12 дней вперёд</p>
       </div>
       <div class="dates" id="dates"></div>
-    </div>
 
-    <div class="card">
-      <div class="head">
-        <p class="h">Время</p>
-        <p class="hint">слоты</p>
-      </div>
-      <div class="slots" id="slots"></div>
+      <button class="btn" id="send" disabled>📨 Показать свободные слоты</button>
 
-      <div class="summary" id="summary">
-        <p id="summaryText"></p>
-        <span class="price" id="summaryPrice"></span>
-      </div>
+      <p class="note">
+        Почему так: локально без API Mini App не может узнать занятость из базы.
+        Поэтому бот посчитает свободные слоты и пришлёт их в чат.
+      </p>
     </div>
   </div>
 
   <script>
     const tg = window.Telegram?.WebApp;
-    if (tg) {
-      tg.ready();
-      tg.expand();
-    }
+    if (tg) { tg.ready(); tg.expand(); }
 
-    // ======= временные данные (позже подключим API) =======
+    // Временно статикой (позже можно тянуть из Django через API)
     const SERVICES = [
       { id: 1, name: "Наращивание классика", price: 40, durationMin: 120 },
       { id: 2, name: "2D/3D", price: 55, durationMin: 150 },
@@ -332,27 +209,13 @@
       { id: 4, name: "Снятие", price: 15, durationMin: 30 },
     ];
 
-    const CLOSED_WEEKDAYS = new Set([0]); // Вс закрыто
-    const WORK_START = "09:00";
-    const WORK_END   = "19:00";
-    const STEP_MIN = 30;
-    const DAYS_AHEAD = 12; // чтобы уместилось сеткой без “простыней” (можно 14)
+    const DAYS_AHEAD = 12;
 
-    // ======= state =======
     let selectedService = null;
-    let selectedDateISO = null; // YYYY-MM-DD
-    let selectedTime = null;    // HH:MM
+    let selectedDateISO = null;
 
-    // ======= helpers =======
-    function pad2(n){ return String(n).padStart(2, "0"); }
+    function pad2(n){ return String(n).padStart(2,"0"); }
     function toISODate(d){ return `${d.getFullYear()}-${pad2(d.getMonth()+1)}-${pad2(d.getDate())}`; }
-    function parseHM(hm){ const [h,m] = hm.split(":").map(x => parseInt(x,10)); return {h,m}; }
-    function minutesOf(hm){ const {h,m} = parseHM(hm); return h*60 + m; }
-    function hmFromMinutes(total){
-      const h = Math.floor(total/60);
-      const m = total % 60;
-      return `${pad2(h)}:${pad2(m)}`;
-    }
     function formatDateChip(iso){
       const d = new Date(iso + "T00:00:00");
       const dd = pad2(d.getDate());
@@ -360,67 +223,12 @@
       const wd = ["Вс","Пн","Вт","Ср","Чт","Пт","Сб"][d.getDay()];
       return { top: `${dd}.${mm}`, bottom: wd };
     }
-    function isPastDate(iso){
-      const today = new Date();
-      const d = new Date(iso + "T00:00:00");
-      const a = new Date(today.getFullYear(), today.getMonth(), today.getDate()).getTime();
-      const b = new Date(d.getFullYear(), d.getMonth(), d.getDate()).getTime();
-      return b < a;
-    }
-    function isClosed(iso){
-      const d = new Date(iso + "T00:00:00");
-      return CLOSED_WEEKDAYS.has(d.getDay());
-    }
-    function hasSlotsOnDate(iso){
-      if (isPastDate(iso)) return false;
-      if (isClosed(iso)) return false;
-      return true;
-    }
-    function buildSlotsForDate(iso){
-      if (!hasSlotsOnDate(iso)) return [];
-      const start = minutesOf(WORK_START);
-      const end   = minutesOf(WORK_END);
-      const slots = [];
 
-      const now = new Date();
-      const isToday = (toISODate(now) === iso);
-      const nowMin = now.getHours()*60 + now.getMinutes();
-
-      for (let t = start; t + STEP_MIN <= end; t += STEP_MIN){
-        if (isToday && t < nowMin) continue;
-        slots.push(hmFromMinutes(t));
-      }
-      return slots;
+    function updateButton(){
+      const btn = document.getElementById("send");
+      btn.disabled = !(selectedService && selectedDateISO);
     }
 
-    function updateMainButton(){
-      if (!tg) return;
-      const ok = !!(selectedService && selectedDateISO && selectedTime);
-      if (!ok){
-        tg.MainButton.hide();
-        return;
-      }
-      tg.MainButton.setText("✅ Записаться");
-      tg.MainButton.show();
-      tg.MainButton.enable();
-    }
-
-    function renderSummary(){
-      const el = document.getElementById("summary");
-      const txt = document.getElementById("summaryText");
-      const price = document.getElementById("summaryPrice");
-
-      if (!(selectedService && selectedDateISO && selectedTime)){
-        el.style.display = "none";
-        return;
-      }
-      const d = formatDateChip(selectedDateISO);
-      txt.innerHTML = `Вы выбрали: <strong>${selectedService.name}</strong>, <strong>${d.top}</strong> (${d.bottom}), <strong>${selectedTime}</strong>`;
-      price.textContent = `💳 ${selectedService.price} BYN`;
-      el.style.display = "flex";
-    }
-
-    // ======= render services =======
     function renderServices(){
       const wrap = document.getElementById("services");
       wrap.innerHTML = "";
@@ -436,17 +244,13 @@
         `;
         div.onclick = () => {
           selectedService = s;
-          selectedTime = null;
           renderServices();
-          renderSlots();
-          renderSummary();
-          updateMainButton();
+          updateButton();
         };
         wrap.appendChild(div);
       });
     }
 
-    // ======= render dates (сеткой) =======
     function renderDates(){
       const wrap = document.getElementById("dates");
       wrap.innerHTML = "";
@@ -455,105 +259,51 @@
       for (let i=0; i<DAYS_AHEAD; i++){
         const d = new Date(today.getFullYear(), today.getMonth(), today.getDate() + i);
         const iso = toISODate(d);
-
-        const ok = hasSlotsOnDate(iso);
         const {top, bottom} = formatDateChip(iso);
 
         const chip = document.createElement("div");
-        chip.className = "date " + (ok ? "ok" : "bad") + (selectedDateISO === iso ? " active" : "");
+        chip.className = "date" + (selectedDateISO === iso ? " active" : "");
         chip.innerHTML = `
-          <p class="d1">${ok ? "🟢" : "🔴"} ${top}</p>
+          <p class="d1">${top}</p>
           <p class="d2">${bottom}</p>
         `;
-
         chip.onclick = () => {
-          if (!ok){
-            tg?.showPopup?.({ title: "Закрыто", message: "На эту дату запись недоступна.", buttons: [{type:"ok"}] });
-            return;
-          }
           selectedDateISO = iso;
-          selectedTime = null;
           renderDates();
-          renderSlots();
-          renderSummary();
-          updateMainButton();
+          updateButton();
         };
-
         wrap.appendChild(chip);
       }
 
-      if (!selectedDateISO) {
-        const todayISO = toISODate(new Date());
-        if (hasSlotsOnDate(todayISO)) selectedDateISO = todayISO;
-      }
+      if (!selectedDateISO) selectedDateISO = toISODate(new Date());
     }
 
-    // ======= render slots =======
-    function renderSlots(){
-      const wrap = document.getElementById("slots");
-      wrap.innerHTML = "";
-
-      if (!selectedDateISO){
-        wrap.innerHTML = `<div class="empty">Выберите дату, чтобы увидеть слоты.</div>`;
-        return;
-      }
-
-      const slots = buildSlotsForDate(selectedDateISO);
-      if (!slots.length){
-        wrap.innerHTML = `<div class="empty">На эту дату нет слотов.</div>`;
-        return;
-      }
-
-      slots.forEach(hm => {
-        const btn = document.createElement("div");
-        const active = (selectedTime === hm);
-        btn.className = "slot ok" + (active ? " active" : "");
-        btn.textContent = hm;
-
-        btn.onclick = () => {
-          selectedTime = hm;
-          renderSlots();
-          renderSummary();
-          updateMainButton();
-        };
-
-        wrap.appendChild(btn);
-      });
-    }
-
-    // ======= init =======
     function init(){
       const hello = document.getElementById("hello");
-      const badge = document.getElementById("badge");
-
       if (tg){
         const u = tg.initDataUnsafe?.user;
         hello.textContent = u ? `Привет, ${u.first_name}!` : "Привет!";
-        badge.textContent = "Telegram Mini App";
-        tg.MainButton.hide();
-
-        tg.onEvent("mainButtonClicked", () => {
-          if (!(selectedService && selectedDateISO && selectedTime)) return;
-          const payload = {
-            action: "book",
-            service_id: selectedService.id,
-            date: selectedDateISO,
-            time: selectedTime
-          };
-          tg.sendData(JSON.stringify(payload));
-          tg.close();
-        });
       } else {
         hello.textContent = "Откройте через Telegram";
-        badge.textContent = "Web";
       }
 
       selectedService = SERVICES[0];
       renderServices();
       renderDates();
-      renderSlots();
-      renderSummary();
-      updateMainButton();
+      updateButton();
+
+      document.getElementById("send").onclick = () => {
+        if (!tg) return;
+
+        const payload = {
+          action: "get_slots",
+          service_id: selectedService.id,
+          date: selectedDateISO
+        };
+
+        tg.sendData(JSON.stringify(payload));
+        tg.close();
+      };
     }
 
     init();
