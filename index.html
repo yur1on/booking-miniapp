@@ -7,41 +7,34 @@
   <script src="https://telegram.org/js/telegram-web-app.js"></script>
 
   <style>
-    /* =========================
-       Mobile-first + Telegram theme
-       ========================= */
     :root{
-      /* fallback colors (если открыть не из Telegram) */
       --bg: #0b1220;
       --text: rgba(255,255,255,.92);
       --hint: rgba(255,255,255,.62);
+      --border: rgba(255,255,255,.12);
       --card: rgba(255,255,255,.06);
-      --border: rgba(255,255,255,.10);
 
       --ok: #22c55e;
       --bad:#ef4444;
 
       --radius: 16px;
       --radius2: 14px;
+      --shadow: 0 10px 26px rgba(0,0,0,.22);
 
-      --shadow: 0 10px 26px rgba(0,0,0,.25);
-
-      /* размеры */
-      --tap: 44px;
-      --gap: 12px;
-      --pad: 16px;
+      --tap: 46px;        /* минимум для пальцев */
+      --gap: 10px;
+      --pad: 14px;
     }
 
-    /* Telegram theme variables */
     body{
-      margin: 0;
+      margin:0;
       font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial;
       background: var(--tg-theme-bg-color, var(--bg));
       color: var(--tg-theme-text-color, var(--text));
     }
 
     .wrap{
-      max-width: 860px;
+      max-width: 520px; /* телефонный фокус */
       margin: 0 auto;
       padding:
         calc(var(--pad) + env(safe-area-inset-top))
@@ -50,7 +43,7 @@
     }
 
     .hero{
-      border: 1px solid var(--tg-theme-hint-color, var(--border));
+      border: 1px solid color-mix(in srgb, var(--tg-theme-hint-color, #999) 28%, transparent);
       background: linear-gradient(
         135deg,
         color-mix(in srgb, var(--tg-theme-button-color, #4f46e5) 22%, transparent),
@@ -65,14 +58,7 @@
       gap: 10px;
     }
 
-    .title{
-      margin: 0;
-      font-weight: 850;
-      font-size: 18px;
-      line-height: 1.2;
-      letter-spacing: .2px;
-    }
-
+    .title{ margin:0; font-weight: 900; font-size: 18px; line-height: 1.2; }
     .subtitle{
       margin: 6px 0 0 0;
       font-size: 13px;
@@ -81,9 +67,8 @@
     }
 
     .pill{
-      flex: 0 0 auto;
-      border: 1px solid var(--tg-theme-hint-color, var(--border));
-      background: color-mix(in srgb, var(--tg-theme-bg-color, #000) 80%, transparent);
+      border: 1px solid color-mix(in srgb, var(--tg-theme-hint-color, #999) 28%, transparent);
+      background: color-mix(in srgb, var(--tg-theme-bg-color, #000) 82%, transparent);
       border-radius: 999px;
       padding: 8px 10px;
       font-size: 12px;
@@ -91,17 +76,10 @@
       white-space: nowrap;
     }
 
-    .grid{
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: var(--gap);
-      margin-top: var(--gap);
-    }
-
     .card{
-      border: 1px solid var(--tg-theme-hint-color, var(--border));
-      background: color-mix(in srgb, var(--tg-theme-bg-color, var(--bg)) 82%, white 18%);
-      /* выше — мягкий “стеклянный” эффект даже в светлой теме */
+      margin-top: var(--gap);
+      border: 1px solid color-mix(in srgb, var(--tg-theme-hint-color, #999) 28%, transparent);
+      background: color-mix(in srgb, var(--tg-theme-bg-color, var(--bg)) 86%, white 14%);
       border-radius: var(--radius);
       padding: 14px;
       box-shadow: var(--shadow);
@@ -114,38 +92,28 @@
       gap: 10px;
       margin-bottom: 10px;
     }
-    .h{
-      margin: 0;
-      font-weight: 850;
-      font-size: 14px;
-      letter-spacing: .2px;
-    }
+    .h{ margin:0; font-weight: 900; font-size: 14px; letter-spacing: .2px; }
     .hint{
-      margin: 0;
+      margin:0;
       font-size: 12px;
       color: var(--tg-theme-hint-color, var(--hint));
-      text-align: right;
+      text-align:right;
       line-height: 1.2;
     }
 
-    /* =========================
-       SERVICES (карточки, симметрия)
-       ========================= */
+    /* SERVICES */
     .services{
       display:grid;
+      grid-template-columns: 1fr;
       gap: 10px;
-      grid-template-columns: repeat(2, minmax(0,1fr));
-    }
-    @media (max-width: 520px){
-      .services{ grid-template-columns: 1fr; }
     }
 
     .svc{
-      min-height: 76px;
       border-radius: var(--radius2);
-      border: 1px solid var(--tg-theme-hint-color, var(--border));
-      background: color-mix(in srgb, var(--tg-theme-bg-color, var(--bg)) 88%, white 12%);
+      border: 1px solid color-mix(in srgb, var(--tg-theme-hint-color, #999) 28%, transparent);
+      background: color-mix(in srgb, var(--tg-theme-bg-color, var(--bg)) 90%, white 10%);
       padding: 12px;
+      min-height: 74px;
       cursor: pointer;
       user-select:none;
       transition: transform .08s ease, border-color .12s ease, background .12s ease;
@@ -155,90 +123,64 @@
       gap: 8px;
     }
     .svc:active{ transform: scale(.99); }
-
     .svc.active{
       border-color: color-mix(in srgb, var(--tg-theme-button-color, #4f46e5) 70%, white 30%);
       background: linear-gradient(
         135deg,
-        color-mix(in srgb, var(--tg-theme-button-color, #4f46e5) 18%, transparent),
+        color-mix(in srgb, var(--tg-theme-button-color, #4f46e5) 16%, transparent),
         color-mix(in srgb, var(--tg-theme-link-color, #6ee7ff) 10%, transparent)
       );
     }
-
     .svc-top{
       display:flex;
       gap: 10px;
-      align-items:flex-start;
       justify-content: space-between;
+      align-items:flex-start;
     }
-    .svc-name{
-      margin: 0;
-      font-weight: 850;
-      font-size: 13px;
-      line-height: 1.2;
-    }
-    .svc-price{
-      margin: 0;
-      font-weight: 900;
-      font-size: 13px;
-      color: var(--tg-theme-link-color, #6ee7ff);
-      white-space: nowrap;
-    }
-    .svc-meta{
-      margin: 0;
-      font-size: 12px;
-      color: var(--tg-theme-hint-color, var(--hint));
-    }
+    .svc-name{ margin:0; font-weight: 900; font-size: 13px; line-height: 1.2; }
+    .svc-price{ margin:0; font-weight: 950; font-size: 13px; color: var(--tg-theme-link-color, #6ee7ff); white-space: nowrap; }
+    .svc-meta{ margin:0; font-size: 12px; color: var(--tg-theme-hint-color, var(--hint)); }
 
-    /* =========================
-       DATES (чипы, аккуратно, симметрично)
-       ========================= */
+    /* DATES: сетка без прокрутки */
     .dates{
-      display:flex;
+      display:grid;
       gap: 10px;
-      overflow:auto;
-      padding-bottom: 6px;
-      scroll-snap-type: x mandatory;
-      -webkit-overflow-scrolling: touch;
+      grid-template-columns: repeat(4, minmax(0,1fr));
     }
-    .dates::-webkit-scrollbar{ height: 8px; }
-    .dates::-webkit-scrollbar-thumb{
-      background: color-mix(in srgb, var(--tg-theme-hint-color, #999) 25%, transparent);
-      border-radius: 999px;
+    /* очень маленькие экраны */
+    @media (max-width: 360px){
+      .dates{ grid-template-columns: repeat(3, minmax(0,1fr)); }
     }
 
     .date{
-      width: 92px;
-      flex: 0 0 auto;
-      scroll-snap-align: start;
+      height: 58px;
       border-radius: 14px;
-      border: 1px solid var(--tg-theme-hint-color, var(--border));
-      background: color-mix(in srgb, var(--tg-theme-bg-color, var(--bg)) 88%, white 12%);
-      padding: 10px 10px;
+      border: 1px solid color-mix(in srgb, var(--tg-theme-hint-color, #999) 28%, transparent);
+      background: color-mix(in srgb, var(--tg-theme-bg-color, var(--bg)) 90%, white 10%);
       cursor:pointer;
       user-select:none;
       transition: transform .08s ease, border-color .12s ease, background .12s ease;
-      text-align:center;
-      min-height: var(--tap);
       display:flex;
       flex-direction: column;
-      justify-content: center;
+      align-items:center;
+      justify-content:center;
       gap: 2px;
+      text-align:center;
     }
     .date:active{ transform: scale(.99); }
 
     .date.ok{
-      border-color: color-mix(in srgb, var(--ok) 35%, white 65%);
+      border-color: color-mix(in srgb, var(--ok) 38%, white 62%);
       background: linear-gradient(
         135deg,
         color-mix(in srgb, var(--ok) 14%, transparent),
-        color-mix(in srgb, var(--tg-theme-link-color, #6ee7ff) 7%, transparent)
+        color-mix(in srgb, var(--tg-theme-link-color, #6ee7ff) 6%, transparent)
       );
     }
     .date.bad{
-      border-color: color-mix(in srgb, var(--bad) 30%, white 70%);
+      border-color: color-mix(in srgb, var(--bad) 34%, white 66%);
       background: color-mix(in srgb, var(--bad) 10%, transparent);
-      opacity: .78;
+      opacity: .75;
     }
     .date.active{
       border-color: color-mix(in srgb, var(--tg-theme-button-color, #4f46e5) 70%, white 30%);
@@ -249,53 +191,39 @@
       );
     }
 
-    .d1{
-      margin:0;
-      font-weight: 950;
-      font-size: 14px;
-      letter-spacing: .2px;
-    }
-    .d2{
-      margin:0;
-      font-size: 12px;
-      color: var(--tg-theme-hint-color, var(--hint));
-    }
+    .d1{ margin:0; font-weight: 950; font-size: 13px; letter-spacing: .2px; }
+    .d2{ margin:0; font-size: 11px; color: var(--tg-theme-hint-color, var(--hint)); }
 
-    /* =========================
-       SLOTS (плитки, адаптивная сетка)
-       ========================= */
+    /* SLOTS: сетка всегда по экрану */
     .slots{
       display:grid;
-      grid-template-columns: repeat(3, minmax(0,1fr));
       gap: 10px;
+      grid-template-columns: repeat(3, minmax(0,1fr));
     }
-    /* более широкие телефоны / маленькие планшеты */
-    @media (min-width: 420px){
+    @media (min-width: 390px){
       .slots{ grid-template-columns: repeat(4, minmax(0,1fr)); }
     }
-    @media (min-width: 720px){
-      .slots{ grid-template-columns: repeat(6, minmax(0,1fr)); }
+    @media (min-width: 480px){
+      .slots{ grid-template-columns: repeat(5, minmax(0,1fr)); }
     }
 
     .slot{
       height: var(--tap);
       border-radius: 14px;
-      border: 1px solid var(--tg-theme-hint-color, var(--border));
-      background: color-mix(in srgb, var(--tg-theme-bg-color, var(--bg)) 88%, white 12%);
+      border: 1px solid color-mix(in srgb, var(--tg-theme-hint-color, #999) 28%, transparent);
+      background: color-mix(in srgb, var(--tg-theme-bg-color, var(--bg)) 90%, white 10%);
       display:flex;
       align-items:center;
       justify-content:center;
       font-weight: 950;
       font-size: 13px;
-      letter-spacing: .2px;
       cursor:pointer;
       user-select:none;
       transition: transform .08s ease, border-color .12s ease, background .12s ease;
     }
     .slot:active{ transform: scale(.99); }
-
     .slot.ok{
-      border-color: color-mix(in srgb, var(--ok) 35%, white 65%);
+      border-color: color-mix(in srgb, var(--ok) 38%, white 62%);
       background: linear-gradient(
         135deg,
         color-mix(in srgb, var(--ok) 12%, transparent),
@@ -303,7 +231,7 @@
       );
     }
     .slot.active{
-      border-color: color-mix(in srgb, var(--ok) 75%, white 25%);
+      border-color: color-mix(in srgb, var(--ok) 78%, white 22%);
       background: linear-gradient(
         135deg,
         color-mix(in srgb, var(--ok) 22%, transparent),
@@ -313,46 +241,38 @@
 
     .empty{
       grid-column: 1 / -1;
-      padding: 8px 2px 2px;
       color: var(--tg-theme-hint-color, var(--hint));
       font-size: 13px;
       line-height: 1.35;
+      padding: 2px;
     }
 
     .summary{
       margin-top: 12px;
       border-radius: var(--radius);
-      border: 1px solid var(--tg-theme-hint-color, var(--border));
-      background: color-mix(in srgb, var(--tg-theme-bg-color, var(--bg)) 86%, white 14%);
+      border: 1px solid color-mix(in srgb, var(--tg-theme-hint-color, #999) 28%, transparent);
+      background: color-mix(in srgb, var(--tg-theme-bg-color, var(--bg)) 88%, white 12%);
       padding: 12px;
       display:none;
       gap: 10px;
-      align-items: center;
+      align-items:center;
       justify-content: space-between;
       flex-wrap: wrap;
     }
     .summary p{
-      margin: 0;
+      margin:0;
       font-size: 13px;
       color: var(--tg-theme-hint-color, var(--hint));
       line-height: 1.35;
     }
     .summary strong{ color: var(--tg-theme-text-color, var(--text)); }
-    .summary .price{
+    .price{
       border-radius: 999px;
       padding: 8px 10px;
+      border: 1px solid color-mix(in srgb, var(--tg-theme-hint-color, #999) 28%, transparent);
+      background: color-mix(in srgb, var(--tg-theme-bg-color, var(--bg)) 90%, white 10%);
       font-size: 12px;
-      border: 1px solid var(--tg-theme-hint-color, var(--border));
-      background: color-mix(in srgb, var(--tg-theme-bg-color, var(--bg)) 88%, white 12%);
-      color: var(--tg-theme-text-color, var(--text));
       white-space: nowrap;
-    }
-
-    .note{
-      margin: 10px 0 0 0;
-      font-size: 12px;
-      color: var(--tg-theme-hint-color, var(--hint));
-      line-height: 1.35;
     }
   </style>
 </head>
@@ -362,51 +282,38 @@
     <div class="hero">
       <div>
         <p class="title" id="hello">Загрузка…</p>
-        <p class="subtitle">1) Услуга → 2) Дата → 3) Время. Запись оформится кнопкой Telegram снизу.</p>
+        <p class="subtitle">Выбирайте без прокрутки: всё помещается по ширине экрана ✅</p>
       </div>
       <div class="pill" id="badge">Mini App</div>
     </div>
 
-    <div class="grid">
-
-      <!-- SERVICES -->
-      <div class="card">
-        <div class="head">
-          <p class="h">Услуга</p>
-          <p class="hint">Выберите одну</p>
-        </div>
-        <div class="services" id="services"></div>
+    <div class="card">
+      <div class="head">
+        <p class="h">Услуга</p>
+        <p class="hint">тап по карточке</p>
       </div>
+      <div class="services" id="services"></div>
+    </div>
 
-      <!-- DATES -->
-      <div class="card">
-        <div class="head">
-          <p class="h">Дата</p>
-          <p class="hint">🟢 свободно · 🔴 закрыто</p>
-        </div>
-        <div class="dates" id="dates"></div>
-        <p class="note">
-          Сейчас “свободно” — по расписанию (без учёта занятых записей).
-          Когда подключим API, будут только реально свободные даты/слоты.
-        </p>
+    <div class="card">
+      <div class="head">
+        <p class="h">Дата</p>
+        <p class="hint">🟢 свободно · 🔴 закрыто</p>
       </div>
+      <div class="dates" id="dates"></div>
+    </div>
 
-      <!-- SLOTS -->
-      <div class="card">
-        <div class="head">
-          <p class="h">Время</p>
-          <p class="hint">Слоты</p>
-        </div>
-        <div class="slots" id="slots"></div>
-
-        <div class="summary" id="summary">
-          <p id="summaryText"></p>
-          <span class="price" id="summaryPrice"></span>
-        </div>
-
-        <p class="note">Совет: если не видите нужную дату — листайте чипы влево/вправо.</p>
+    <div class="card">
+      <div class="head">
+        <p class="h">Время</p>
+        <p class="hint">слоты</p>
       </div>
+      <div class="slots" id="slots"></div>
 
+      <div class="summary" id="summary">
+        <p id="summaryText"></p>
+        <span class="price" id="summaryPrice"></span>
+      </div>
     </div>
   </div>
 
@@ -417,9 +324,7 @@
       tg.expand();
     }
 
-    // =====================
-    // ВРЕМЕННЫЕ ДАННЫЕ (позже заменим на API)
-    // =====================
+    // ======= временные данные (позже подключим API) =======
     const SERVICES = [
       { id: 1, name: "Наращивание классика", price: 40, durationMin: 120 },
       { id: 2, name: "2D/3D", price: 55, durationMin: 150 },
@@ -427,22 +332,18 @@
       { id: 4, name: "Снятие", price: 15, durationMin: 30 },
     ];
 
-    const CLOSED_WEEKDAYS = new Set([0]); // 0=Вс закрыто
+    const CLOSED_WEEKDAYS = new Set([0]); // Вс закрыто
     const WORK_START = "09:00";
     const WORK_END   = "19:00";
     const STEP_MIN = 30;
-    const DAYS_AHEAD = 14;
+    const DAYS_AHEAD = 12; // чтобы уместилось сеткой без “простыней” (можно 14)
 
-    // =====================
-    // STATE
-    // =====================
+    // ======= state =======
     let selectedService = null;
     let selectedDateISO = null; // YYYY-MM-DD
     let selectedTime = null;    // HH:MM
 
-    // =====================
-    // helpers
-    // =====================
+    // ======= helpers =======
     function pad2(n){ return String(n).padStart(2, "0"); }
     function toISODate(d){ return `${d.getFullYear()}-${pad2(d.getMonth()+1)}-${pad2(d.getDate())}`; }
     function parseHM(hm){ const [h,m] = hm.split(":").map(x => parseInt(x,10)); return {h,m}; }
@@ -452,7 +353,6 @@
       const m = total % 60;
       return `${pad2(h)}:${pad2(m)}`;
     }
-
     function formatDateChip(iso){
       const d = new Date(iso + "T00:00:00");
       const dd = pad2(d.getDate());
@@ -460,7 +360,6 @@
       const wd = ["Вс","Пн","Вт","Ср","Чт","Пт","Сб"][d.getDay()];
       return { top: `${dd}.${mm}`, bottom: wd };
     }
-
     function isPastDate(iso){
       const today = new Date();
       const d = new Date(iso + "T00:00:00");
@@ -468,19 +367,15 @@
       const b = new Date(d.getFullYear(), d.getMonth(), d.getDate()).getTime();
       return b < a;
     }
-
     function isClosed(iso){
       const d = new Date(iso + "T00:00:00");
       return CLOSED_WEEKDAYS.has(d.getDay());
     }
-
-    // Пока "свободно" = день не закрыт и не в прошлом
     function hasSlotsOnDate(iso){
       if (isPastDate(iso)) return false;
       if (isClosed(iso)) return false;
       return true;
     }
-
     function buildSlotsForDate(iso){
       if (!hasSlotsOnDate(iso)) return [];
       const start = minutesOf(WORK_START);
@@ -525,13 +420,10 @@
       el.style.display = "flex";
     }
 
-    // =====================
-    // render services
-    // =====================
+    // ======= render services =======
     function renderServices(){
       const wrap = document.getElementById("services");
       wrap.innerHTML = "";
-
       SERVICES.forEach(s => {
         const div = document.createElement("div");
         div.className = "svc" + (selectedService?.id === s.id ? " active" : "");
@@ -554,9 +446,7 @@
       });
     }
 
-    // =====================
-    // render dates
-    // =====================
+    // ======= render dates (сеткой) =======
     function renderDates(){
       const wrap = document.getElementById("dates");
       wrap.innerHTML = "";
@@ -598,9 +488,7 @@
       }
     }
 
-    // =====================
-    // render slots
-    // =====================
+    // ======= render slots =======
     function renderSlots(){
       const wrap = document.getElementById("slots");
       wrap.innerHTML = "";
@@ -633,9 +521,7 @@
       });
     }
 
-    // =====================
-    // init
-    // =====================
+    // ======= init =======
     function init(){
       const hello = document.getElementById("hello");
       const badge = document.getElementById("badge");
